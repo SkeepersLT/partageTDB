@@ -1226,6 +1226,66 @@
     .demo-steps-card .project-title { margin-bottom: 1.25rem; }
     .demo-steps-card .steps-list li { margin-bottom: 0.75rem; }
     .demo-steps-card .project-links { margin-top: 2rem; }
+
+    /* ============================================================
+       Tableau comparatif (Aller plus en détails)
+    ============================================================ */
+    .cmp-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .cmp-table { width: 100%; min-width: 760px; border-collapse: collapse; table-layout: fixed; }
+    .cmp-table th, .cmp-table td {
+      padding: 1.1rem 1.4rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .cmp-table th:first-child { width: 24%; }
+    .cmp-table tbody tr:last-child th, .cmp-table tbody tr:last-child td { border-bottom: none; }
+    .cmp-table thead th {
+      background: var(--bg-raised);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      font-weight: 500;
+      vertical-align: middle;
+    }
+    .cmp-head { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--white); }
+    .cmp-head svg { flex: none; }
+    .cmp-table tbody th {
+      font-family: var(--ff-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .cmp-table td { color: var(--text-muted); }
+    .cmp-table .col-hl { background: rgba(0,115,255,0.06); }
+    .cmp-table thead .col-hl { background: rgba(0,115,255,0.14); }
+    .cmp-val { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--white); }
+    .cmp-val strong { font-weight: 700; }
+    .cmp-val .ic { flex: none; }
+    .cmp-val.yes .ic { color: #0073ff; }
+    .cmp-val.no { color: var(--text-muted); }
+    .cmp-val.no .ic { color: #6b6863; }
+    .cmp-note { display: block; margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; }
+    .dot.low { background: #6b6863; }
+    .dot.mid { background: #7fb2ff; }
+    .dot.high { background: #0073ff; box-shadow: 0 0 0 3px rgba(0,115,255,0.2); }
+    .cmp-links { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; margin-top: 1.75rem; }
+    .cmp-links a { font-size: 0.85rem; color: var(--gold); }
+    @media (max-width: 900px) {
+      .cmp-table th, .cmp-table td { padding: 0.9rem 1rem; }
+    }
   </style>
 </head>
 
@@ -1414,53 +1474,74 @@
         <h2 class="section-title">Aller plus en détails</h2>
         <div class="section-line"></div>
       </div>
-      <div class="projects-grid">
 
-        <div class="project-card fade-up">
-          <div class="icon-visual">
-            <div class="icon-visual-inner">
-              <div class="icon-visual-row"><div class="icon-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><span class="icon-arrow">→</span><div class="icon-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></div></div>
-              <span class="icon-visual-label">Tableau de bord → Lien</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">URL</span><span class="project-tag">Lien</span><span class="project-tag">Destinataires</span></div>
-            <h3 class="project-title">Partager un tableau de bord par URL</h3>
-            <p class="project-desc">Partagez votre tableau de bord par URL depuis le bouton « Partager le tableau de bord », en ciblant les utilisateurs, destinataires ou adresses concernés.</p>
-            <div class="project-links"><a href="https://help.cxr.skeepers.com/hc/fr/articles/6421229548060-Partager-et-diffuser-un-tableau-de-bord-par-URL" target="_blank"><u>Consulter l'article : partager un tableau de bord par URL</u></a></div>
-          </div>
-        </div>
+      <div class="cmp-wrap fade-up">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th scope="col">Mode de partage</th>
+              <th scope="col"><span class="cmp-head"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Par URL</span></th>
+              <th scope="col"><span class="cmp-head"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Par email</span></th>
+              <th scope="col" class="col-hl"><span class="cmp-head"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>Via un accès Skeepers</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Accès</th>
+              <td>Via un lien transmis</td>
+              <td>Via le lien reçu par email</td>
+              <td class="col-hl">Depuis l'espace Skeepers</td>
+            </tr>
+            <tr>
+              <th scope="row">Plusieurs dashboards accessibles au même endroit</th>
+              <td><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span><strong>Non</strong></span></span><span class="cmp-note">1 lien = accès à 1 dashboard</span></td>
+              <td><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span><strong>Non</strong></span></span><span class="cmp-note">chaque dashboard est accessible via son propre lien reçu par email</span></td>
+              <td class="col-hl"><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><strong>Oui</strong></span></span><span class="cmp-note">plusieurs dashboards sont regroupés dans le même espace</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Dashboard visible sur l'accueil Skeepers</th>
+              <td><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Non</span></span></td>
+              <td><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Non</span></span></td>
+              <td class="col-hl"><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oui</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Email automatique</th>
+              <td><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Non</span></span></td>
+              <td><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oui</span></span></td>
+              <td class="col-hl"><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Non</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Ciblage par propriétés</th>
+              <td><span class="cmp-val no"><svg class="ic ic-no" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Non</span></span></td>
+              <td><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oui</span></span></td>
+              <td class="col-hl"><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Oui</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Filtrage</th>
+              <td><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Possible</span></span></td>
+              <td><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Possible</span></span></td>
+              <td class="col-hl"><span class="cmp-val yes"><svg class="ic ic-yes" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Possible</span></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Validité</th>
+              <td>Jusqu'à 365 jours</td>
+              <td>365 jours par défaut</td>
+              <td class="col-hl">Liée à l'accès du destinataire</td>
+            </tr>
+            <tr>
+              <th scope="row">Adapté à une diffusion massive</th>
+              <td><span class="cmp-val"><i class="dot low"></i><span>Peu adapté</span></span></td>
+              <td><span class="cmp-val"><i class="dot mid"></i><span>Adapté</span></span></td>
+              <td class="col-hl"><span class="cmp-val"><i class="dot high"></i><span><strong>Très adapté</strong></span></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <div class="project-card fade-up">
-          <div class="icon-visual">
-            <div class="icon-visual-inner">
-              <div class="icon-visual-row"><div class="icon-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><span class="icon-arrow">→</span><div class="icon-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div></div>
-              <span class="icon-visual-label">Tableau de bord → Email</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">Email</span><span class="project-tag">Adresses</span><span class="project-tag">Utilisateurs</span></div>
-            <h3 class="project-title">Partager un tableau de bord par email</h3>
-            <p class="project-desc">Diffusez votre tableau de bord par email à des utilisateurs, des destinataires ou des adresses spécifiques, directement depuis la plateforme.</p>
-            <div class="project-links"><a href="https://help.cxr.skeepers.com/hc/fr/articles/6421560246556-Partager-et-diffuser-un-tableau-de-bord-par-email" target="_blank"><u>Consulter l'article : partager un tableau de bord par email</u></a></div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up">
-          <div class="icon-visual">
-            <div class="icon-visual-inner">
-              <div class="icon-visual-row"><div class="icon-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></div><span class="icon-arrow">→</span><div class="icon-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0073ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div></div>
-              <span class="icon-visual-label">Tableau de bord → Accès Skeepers</span>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-tags"><span class="project-tag">Accès Skeepers</span><span class="project-tag">Page d'accueil</span><span class="project-tag">Statut de partage</span></div>
-            <h3 class="project-title">Partager via un accès à Skeepers</h3>
-            <p class="project-desc">Le nouveau mode donne aux destinataires une page d'accueil dédiée, un menu simplifié et un statut de partage visible (Activé / Désactivé). Il est réservé aux destinataires et aux utilisateurs sans permission de création de tableau de bord.</p>
-            <div class="project-links"><a href="https://help.cxr.skeepers.com/hc/fr/articles/26618060799644-Partager-et-diffuser-un-tableau-de-bord-via-un-acc%C3%A8s-%C3%A0-Skeepers" target="_blank"><u>Consulter l'article : partager via un accès à Skeepers</u></a></div>
-          </div>
-        </div>
-
+      <div class="cmp-links fade-up">
+        <a href="https://help.cxr.skeepers.com/hc/fr/articles/6421229548060-Partager-et-diffuser-un-tableau-de-bord-par-URL" target="_blank"><u>Article : partager un tableau de bord par URL</u></a>
+        <a href="https://help.cxr.skeepers.com/hc/fr/articles/6421560246556-Partager-et-diffuser-un-tableau-de-bord-par-email" target="_blank"><u>Article : partager un tableau de bord par email</u></a>
+        <a href="https://help.cxr.skeepers.com/hc/fr/articles/26618060799644-Partager-et-diffuser-un-tableau-de-bord-via-un-acc%C3%A8s-%C3%A0-Skeepers" target="_blank"><u>Article : partager via un accès à Skeepers</u></a>
       </div>
     </div>
   </section>
